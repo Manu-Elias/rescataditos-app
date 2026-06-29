@@ -1,0 +1,64 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
+  position: fixed;
+/* El navbar se queda fijo en la pantalla aunque hagas scroll */
+
+top: 0;
+/* Lo pega al borde superior de la pantalla */
+
+left: 0;
+/* Lo pega al borde izquierdo */
+
+width: 100%;
+/* Ocupa todo el ancho de la pantalla */
+
+z-index: 100;
+/* Lo pone por encima de todo el contenido — sin esto quedaría tapado */
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: orange;
+    }
+  }
+}
+
+.logo {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.link {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.acciones button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkorange;
+  }
+}
