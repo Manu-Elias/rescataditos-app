@@ -1,0 +1,33 @@
+.contenedor {
+  padding: 6rem 2rem;
+
+  text-align: center;
+}
+
+
+
+//.contenedor{
+  //  padding: 3rem;
+ // max-width: 600px;
+//}
+.titulo {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.nombre {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+.boton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #333;
+    color: white;
+  }
+}

@@ -1,0 +1,240 @@
+.hero {
+  background-image: url('../assets/jason-pofahl-3szw_YfFzK4-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  margin-top: 70px;
+/* Empuja el hero hacia abajo para que no quede tapado por el navbar fijo */
+  padding: 0 4rem;
+}.contenido {
+  max-width: 500px;
+
+  h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  p {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darkorange;
+    }
+  }
+}
+
+.animalAdopcion {
+  padding: 4rem 2rem;
+  /* Espacio interno de la sección — separa el contenido del borde */
+}
+
+.contenedorAdopcion {
+  display: flex;
+  /* Pone la imagen y el texto en fila horizontal */
+
+  align-items: center;
+  /* Alinea verticalmente al centro — imagen y texto quedan a la misma altura */
+
+  gap: 3rem;
+  /* Espacio entre la imagen y el bloque de texto */
+
+  max-width: 1200px;
+  /* Ancho máximo del contenedor — en pantallas grandes no se estira demasiado */
+
+  margin: 0 auto;
+  /* Centra el contenedor horizontalmente en la página */
+}
+
+.mascotaFoto {
+  width: 450px;
+  /* Ancho fijo de la imagen */
+
+  height: 500px;
+  /* Alto fijo de la imagen */
+
+  object-fit: cover;
+  /* Recorta la imagen para que llene el espacio sin deformarse */
+
+  border-radius: 12px;
+  /* Bordes redondeados — se ve más moderno */
+
+  flex-shrink: 0;
+  /* Evita que la imagen se achique cuando el texto necesita más espacio */
+}
+
+.tituloAdopcion {
+  font-size: 2rem;
+  /* Título grande */
+
+  margin-bottom: 1rem;
+  /* Espacio entre el título y el párrafo */
+
+  color: #333;
+  /* Gris oscuro — más suave que el negro puro */
+}
+
+.mensajeAdopcion {
+  font-size: 1rem;
+  line-height: 1.8;
+  /* Espaciado entre líneas — hace el texto más legible */
+
+  color: #555;
+  /* Gris medio — más suave que el título */
+
+  margin-bottom: 1.5rem;
+  /* Espacio entre el texto y el botón */
+}
+
+.btnAdoptar {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkorange;
+  }
+}
+
+.seccionVisitas {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  /* Fondo gris muy claro — diferencia visualmente esta sección de la anterior */
+}
+
+.contenedorVisitas {
+  display: flex;
+  /* Pone el texto y la imagen en fila horizontal */
+
+  align-items: center;
+  /* Alinea verticalmente al centro */
+
+  gap: 3rem;
+  /* Espacio entre el bloque de texto y la imagen */
+
+  max-width: 1200px;
+  /* Ancho máximo — no se estira en pantallas grandes */
+
+  margin: 0 auto;
+  /* Centra el contenedor horizontalmente */
+}
+
+.bloqueInformacion {
+  flex: 1;
+  /* Ocupa el espacio disponible — se adapta según el tamaño de la imagen */
+}
+
+.tituloVisitas {
+  font-size: 2rem;
+  color: orange;
+  /* Naranja para variar del gris oscuro de la sección anterior */
+
+  margin-bottom: 1rem;
+}
+
+.mensajeVisitas {
+  font-size: 1rem;
+  line-height: 1.8;
+  /* Espaciado entre líneas para que sea más legible */
+
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.btnVisitas {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkorange;
+  }
+}
+
+.bloqueImagen {
+  flex: 1;
+  /* Mismo espacio que el bloque de texto */
+}
+
+.fotoVisita {
+  width: 100%;
+  /* Ocupa todo el ancho del bloque */
+
+  height: 450px;
+  object-fit: cover;
+  /* Recorta sin deformar */
+
+  border-radius: 12px;
+  /* Bordes redondeados */
+}
+
+.seccionCards {
+  padding: 4rem 2rem;
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+
+  
+  .arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  border: none;
+
+  cursor: pointer;
+   color: black;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: orange;
+    color: white;
+  }
+  z-index: 10;
+  
+}
+
+
+.arrowLeft {
+  left: 0;
+}
+
+.arrowRight {
+  right: 0;
+  
+}
+}
+
+.grilla {
+  display: flex;
+  gap: 3rem;
+  overflow: hidden;
+}
