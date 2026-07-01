@@ -1,5 +1,6 @@
 import styles from "./Footer.module.scss";
 import { FaInstagram, FaFacebook, FaTiktok, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -43,6 +44,9 @@ const Footer = () => {
               <a href="https://www.youtube.com/@rescataditos4847"> <FaYoutube/> Youtube</a>
             </li>
           </ul>
+        </section>
+        <section>
+          <Link to="/login">Panel de administración</Link>
         </section>
       </div>
       <small className={styles.footerCopyright}>
