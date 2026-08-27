@@ -22,9 +22,10 @@ const Animales = () => {
           key={animal.id}
         >
           <div className={styles.tarjeta}>
-            <h2>{animal.name} </h2>
-            <p>Especie: {animal.address.city}</p>
-            <p>Edad: {animal.email}</p>
+            <h2>{animal.nombre} </h2>
+            <p>Especie: {animal.especie}</p>
+            <p>Historia: {animal.historia}</p>
+            <img src={animal.fotos[0]} alt={animal.especie} />
           </div>
         </Link>
       ))}

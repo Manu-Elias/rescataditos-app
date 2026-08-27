@@ -21,9 +21,10 @@ const DetalleAnimal = () => {
    <section>
      <div className={styles.contenedor}>
       <h1 className={styles.titulo}>Detalle del Animal</h1>
-      <h2 className={styles.nombre}>{animal.name}</h2>
-      <p>Especie: {animal.address.street}</p>
-      <p>Edad: {animal.email}</p>
+      <h2 className={styles.nombre}>{animal.nombre}</h2>
+      <p>Especie: {animal.especie}</p>
+      <p>Historia: {animal.historia}</p>
+      <img src={animal.fotos[0]} alt={animal.especie} />
 
       <button className={styles.boton} onClick={() => navigate("/animales")}> Volver</button>
     </div>
