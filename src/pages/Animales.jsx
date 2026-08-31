@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-//import datos from "../data/animales";
 import { getAnimals } from "../services/animalesService.js";
 import styles from "./Animales.module.scss";
 import { useQuery } from "@tanstack/react-query";
+import AnimalCard from "../components/cards/AnimalCard/AnimalCard.jsx";
+import { SiPanasonic } from "react-icons/si";
 
 const Animales = () => {
   const {data, isLoading, isError} = useQuery({
@@ -21,12 +22,9 @@ const Animales = () => {
           to={`/animales/${animal.id}`}
           key={animal.id}
         >
-          <div className={styles.tarjeta}>
-            <h2>{animal.nombre} </h2>
-            <p>Especie: {animal.especie}</p>
-            <p>Historia: {animal.historia}</p>
-            <img src={animal.fotos[0]} alt={animal.especie} />
-          </div>
+         <AnimalCard animal={animal}>
+          <span>Ver Mas...</span>
+         </AnimalCard>
         </Link>
       ))}
     </div>
