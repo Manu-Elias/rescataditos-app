@@ -1,12 +1,14 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-const AnimalForm =({onCrearAnimal})=>{
-const [formulario, setFormulario] = useState({
+const formularioVacio = {
     nombre:"",
     especie:"Perro",
     historia:"",
     fotos:""
-});
+}
+const AnimalForm =({onCrearAnimal, animalAEditar,onEditarAnimal })=>{
+const [formulario, setFormulario] = useState(formularioVacio);
+
 const handleChange =(e)=>{
     const {name, value} = e.target;
     setFormulario({
@@ -14,9 +16,28 @@ const handleChange =(e)=>{
         [name]: value
     });
 }
+
 const handleSubmit=(e)=>{ e.preventDefault();
-onCrearAnimal(formulario)
+if (animalAEditar){
+    onEditarAnimal(formulario);
 }
+
+else{
+    onCrearAnimal(formulario);
+    setFormulario(formularioVacio); 
+}
+
+}
+
+
+useEffect(() => {
+  if (animalAEditar) {
+    setFormulario(animalAEditar)
+  }
+  else{
+    setFormulario(formularioVacio);
+  }
+}, [animalAEditar]);
 
 
     return(
@@ -39,7 +60,7 @@ onCrearAnimal(formulario)
     <label htmlFor='fotos-animal'>Fotos:  </label>
     <input type="text"  id="fotos-animal" name='fotos' value={formulario.fotos} onChange={handleChange} />
 
-    <button type='submit'>Guardar</button>
+    <button type='submit'>{animalAEditar ? "Guardar Cambios" : "Crear Animal"}</button>
 </form>
     );
 }
