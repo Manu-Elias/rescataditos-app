@@ -1,30 +1,71 @@
-.card {
-  width: 280px;
-  border: 1px solid beige;
-  border-radius: 12px;
+.cardContenedor {
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; // <--- AGREGADO: Fuerza a la tarjeta a acoplarse al ancho de Swiper
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+}
 
-  .cardImagen {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
+.imagenWrapper {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fotoCarruselInterno {
+  width: 100%;
+  height: 100%;
+}
+
+.cardFoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardCuerpo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  h3 {
+    font-size: 18px;
+    color: #1e293b;
+    margin: 0 0 10px 0;
+    font-weight: 700;
   }
-  .cardTitulo {
-    color: orange;
-    font-size: 1.1rem;
-    padding: 1rem 1rem 0.5rem;
-  }
-  .cardDescripcion {
-    color: grey;
-    font-size: 0.9rem;
-    padding: 0 1rem 1rem;
+
+  p {
+    font-size: 14px;
+    color: #64748b;
     line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex-grow: 1; // Mantiene los botones alineados abajo si los textos miden distinto
   }
-  .cardLink {
-    color: orange;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 0 1rem 1rem;
-    line-height: 1.5;
+}
+/* Poné las dimensiones de la foto fijas para que las flechas apunten exacto ahí */
+
+.btnLink {
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: darkorange;
   }
 }

@@ -1,14 +1,15 @@
 .hero {
-  background-image: url('../assets/jason-pofahl-3szw_YfFzK4-unsplash.jpg');
+  background-image: url("../assets/Logo Rescataditos.png");
   background-size: cover;
   background-position: center;
   height: 90vh;
   display: flex;
   align-items: center;
   margin-top: 70px;
-/* Empuja el hero hacia abajo para que no quede tapado por el navbar fijo */
+  /* Empuja el hero hacia abajo para que no quede tapado por el navbar fijo */
   padding: 0 4rem;
-}.contenido {
+}
+.contenido {
   max-width: 500px;
 
   h1 {
@@ -193,48 +194,61 @@
 }
 
 .seccionCards {
-  padding: 4rem 2rem;
-  overflow: hidden;
+  padding: 4rem 4rem;
   position: relative;
-  max-width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 
-  
-  .arrow{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 50px;
-  height: 50px;
-
-  border-radius: 50%;
-  border: none;
-
-  cursor: pointer;
-   color: black;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: orange;
-    color: white;
+  /* CORRECCIÓN PARTE 1: Fuerza a cada slide contenedor a estirarse */
+  :global(.swiper-slide) {
+    height: auto;
+    display: flex;
   }
-  z-index: 10;
-  
-}
 
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 
-.arrowLeft {
-  left: 0;
-}
+    width: 50px;
+    height: 50px;
 
-.arrowRight {
-  right: 0;
-  
-}
+    border-radius: 50%;
+    border: none;
+
+    cursor: pointer;
+    color: black;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: orange;
+      color: white;
+      opacity: 1;
+    }
+    z-index: 10;
+  }
+
+  /* Ajustá estos valores para centrar las flechas más hacia adentro */
+  .arrowLeft {
+    left: 45px; // Antes estaba en 28px. Si querés que se meta más, subilo a 60px o 80px.
+  }
+
+  .arrowRight {
+    right: 45px; // Antes estaba en 28px. Acompaña el mismo valor que el left.
+  }
 }
 
 .grilla {
-  display: flex;
-  gap: 3rem;
-  overflow: hidden;
+  width: 100%;
+  max-width: 1400px; // Lo subimos de 1200px a 1400px para que las 4 o 5 tarjetas tengan aire
+  margin: 0 auto;
+  padding: 10px 0;
+
+  /* CORRECCIÓN PARTE 2: Alinea la fila interna de Swiper para forzar la misma altura */
+  :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
 }
