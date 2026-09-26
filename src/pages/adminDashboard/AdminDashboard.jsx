@@ -1,63 +1,68 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Animales from "../Animales";
+import { useNavigate } from "react-router-dom";
 import AnimalForm from "../../components/forms/AnimalForm";
 import { getAnimals } from "../../services/animalesService";
 import AnimalCard from "../../components/cards/AnimalCard/AnimalCard";
-import { useNavigate } from "react-router-dom";
+import useAnimalStore from "../../store/useAnimalStore";
 import styles from "./AdminDashboard.module.scss";
 import Swal from "sweetalert2";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
 
-  const [animales, setAnimales] = useState([]);
-  const [animalEnEdicion, setAnimalEnEdicion] = useState(null);
+  const animals = useAnimalStore((state) => state.animals);
+  const setAnimals = useAnimalStore((state) => state.setAnimals);
+
+  const deleteAnimal = useAnimalStore((state) => state.deleteAnimal);
+  const addAnimal = useAnimalStore((state) => state.addAnimal);
+  const updateAnimal = useAnimalStore((state) => state.updateAnimal);
+
+  const [editingAnimal, setEditingAnimal] = useState(null);
 
   const { data, isLoading } = useQuery({
-    queryKey: ["animales"],
+    queryKey: ["animals"],
     queryFn: getAnimals,
   });
 
   // Función  para Cerrar Sesión con SweetAlert2
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-
     Swal.fire({
-      title: "¡Sesión Cerrada!",
-      text: "Saliste del panel de administración correctamente.",
-      icon: "success",
-      confirmButtonText: "Entendido",
+      title: "¿Estás seguro de que querés cerrar sesión?",
+      text: "Vas a tener que volver a ingresar tus credenciales para acceder.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Sí, salir",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true, // Deja el botón de confirmar a la derecha
       buttonsStyling: false, // Apaga estilos nativos
       customClass: {
         popup: styles.alertaPopup,
         title: styles.alertaTitulo,
         htmlContainer: styles.alertaContenido,
-        confirmButton: styles.alertaBtnExito,
+        confirmButton: styles.alertaBtnConfirmar, // Podés mapearlo a tus estilos de confirmar
+        cancelButton: styles.alertaBtnCancelar, // O usar styles.alertaBtnPeligro / Salir si tenés
       },
-    }).then(() => {
-      // removemos el item de autenticación
-      localStorage.removeItem("isLoggedIn");
+    }).then((result) => {
+      // Si el usuario hace clic en "Sí, salir"
+      if (result.isConfirmed) {
+        // Removemos el item de autenticación
+        localStorage.removeItem("isLoggedIn");
 
-      // Redirigimos al login
-      navigate("/");
+        // Redirigimos al login
+        navigate("/");
 
-      //  despachar un evento de almacenamiento para que React se entere al instante:
-      window.dispatchEvent(new Event("storage"));
+        // Despachar un evento de almacenamiento para que React se entere al instante:
+        window.dispatchEvent(new Event("storage"));
+      }
     });
   };
 
-  const handleCrearAnimal = (datosFormulario) => {
-    const obtenerIdsAnimales = animales.map((animal) => animal.id);
-    const nuevoId = Math.max(...obtenerIdsAnimales) + 1;
-    const animalNuevo = { ...datosFormulario, id: nuevoId };
-    const animalesActualizados = [...animales, animalNuevo];
-
-    setAnimales(animalesActualizados);
-    localStorage.setItem("animales", JSON.stringify(animalesActualizados));
+  const handleCreateAnimal = (formData) => {
+    addAnimal(formData);
   };
 
-  const handleEliminarAnimal = (id) => {
+  const handleDeleteAnimal = (id) => {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡Esta acción no se puede deshacer!",
@@ -76,43 +81,32 @@ const AdminDashboard = () => {
       buttonsStyling: false, // Le dice a SweetAlert que no use sus estilos por defecto en los botones
     }).then((result) => {
       if (result.isConfirmed) {
-        const animalesFiltrados = animales.filter((animal) => animal.id !== id);
-        setAnimales(animalesFiltrados);
-        localStorage.setItem("animales", JSON.stringify(animalesFiltrados));
+        deleteAnimal(id);
       }
     });
   };
 
-  const handleEditarAnimal = (id) => {
-    const animalEncontrado = animales.find((animal) => animal.id === id);
-    setAnimalEnEdicion(animalEncontrado);
+  const handleEditAnimal = (id) => {
+    const foundAnimal = animals.find((animal) => animal.id === id);
+    setEditingAnimal(foundAnimal);
   };
 
-  const handleGuardarEdicion = (animalModificado) => {
-    const animalesActualizados = animales.map((animal) => {
-      if (animal.id === animalModificado.id) {
-        return animalModificado;
-      } else {
-        return animal;
-      }
-    });
-
-    setAnimales(animalesActualizados);
-    localStorage.setItem("animales", JSON.stringify(animalesActualizados));
-    setAnimalEnEdicion(null);
+  const handleSaveEdit = (modifiedAnimal) => {
+    updateAnimal(modifiedAnimal);
+    setEditingAnimal(null);
   };
 
   useEffect(() => {
-    const datosGuardados = localStorage.getItem("animales");
+    const savedData = localStorage.getItem("animals");
 
-    if (!datosGuardados && !isLoading) {
-      setAnimales(data);
-      localStorage.setItem("animales", JSON.stringify(data));
-    } else if (datosGuardados) {
-      const animalesDelFichero = JSON.parse(datosGuardados);
-      setAnimales(animalesDelFichero);
+    if (!savedData && !isLoading) {
+      setAnimals(data);
+      localStorage.setItem("animals", JSON.stringify(data));
+    } else if (savedData) {
+      const savedAnimals = JSON.parse(savedData);
+      setAnimals(savedAnimals);
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, setAnimals]);
 
   return (
     <div className={styles.dashboardWrapper}>
@@ -131,20 +125,20 @@ const AdminDashboard = () => {
 
         <div className={styles.formSection}>
           <AnimalForm
-            onCrearAnimal={handleCrearAnimal}
-            animalAEditar={animalEnEdicion}
-            onEditarAnimal={handleGuardarEdicion}
+            onCreateAnimal={handleCreateAnimal}
+            animalToEdit={editingAnimal}
+            onEditAnimal={handleSaveEdit}
           />
         </div>
 
         <div className={styles.gridContainer}>
-          {animales.map((animal) => (
+          {animals.map((animal) => (
             <AnimalCard animal={animal} key={animal.id}>
               <div className={styles.buttonGroup}>
                 <button
                   className={styles.botonSecundario}
                   onClick={() => {
-                    handleEditarAnimal(animal.id);
+                    handleEditAnimal(animal.id);
                   }}
                 >
                   Editar Animal
@@ -152,7 +146,7 @@ const AdminDashboard = () => {
                 <button
                   className={styles.botonPeligro}
                   onClick={() => {
-                    handleEliminarAnimal(animal.id);
+                    handleDeleteAnimal(animal.id);
                   }}
                 >
                   Eliminar

@@ -1,74 +1,86 @@
 import { useState, useEffect } from "react";
 import styles from "./AnimalForm.module.scss";
 
-const formularioVacio = {
-  nombre: "",
-  especie: "Perro",
-  historia: "",
-  fotos: "",
+const emptyForm = {
+  name: "",
+  species: "Perro",
+  history: "",
+  photos: "", // Guardamos el texto crudo en el estado local del input
 };
 
-const AnimalForm = ({ onCrearAnimal, animalAEditar, onEditarAnimal }) => {
-  const [formulario, setFormulario] = useState(formularioVacio);
+const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
+  const [form, setFormulario] = useState(emptyForm);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario({
-      ...formulario,
+      ...form,
       [name]: value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (animalAEditar) {
-      onEditarAnimal(formulario);
+
+    const animalData = {
+      ...form,
+      photos: [form.photos],
+    };
+
+    if (animalToEdit) {
+      onEditAnimal(animalData);
     } else {
-      onCrearAnimal(formulario);
-      setFormulario(formularioVacio);
+      onCreateAnimal(animalData);
+      setFormulario(emptyForm);
     }
   };
 
   useEffect(() => {
-    if (animalAEditar) {
-      setFormulario(animalAEditar);
+    if (animalToEdit) {
+      setFormulario({
+        ...animalToEdit,
+        photos:
+          animalToEdit.photos && animalToEdit.photos.length > 0
+            ? animalToEdit.photos[0]
+            : "",
+      });
     } else {
-      setFormulario(formularioVacio);
+      setFormulario(emptyForm);
     }
-  }, [animalAEditar]);
+  }, [animalToEdit]);
 
   return (
     <div className={styles.formContainer}>
       <h3 className={styles.formTitle}>
-        {animalAEditar ? "Editar Ficha de Mascota" : "Registrar Nueva Mascota"}
+        {animalToEdit ? "Editar Ficha de Mascota" : "Registrar Nueva Mascota"}
       </h3>
 
       <form onSubmit={handleSubmit} className={styles.animalForm}>
         <div className={styles.inputGroup}>
-          <label htmlFor="nombre-animal">Nombre</label>
+          <label htmlFor="name-animal">Nombre</label>
           <input
             type="text"
-            id="nombre-animal"
-            name="nombre"
+            id="name-animal"
+            name="name"
             placeholder="Ej: Pimienta"
-            value={formulario.nombre}
+            value={form.name}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className={styles.inputGroup}>
-          <label htmlFor="especie-animal">Especie</label>
+          <label htmlFor="species-animal">Especie</label>
           <div className={styles.selectWrapper}>
             <select
-              id="especie-animal"
-              name="especie"
-              value={formulario.especie}
+              id="species-animal"
+              name="species"
+              value={form.species}
               onChange={handleChange}
             >
               <option value="Perro">Perro</option>
               <option value="Gato">Gato</option>
-              <option value="Conejo"> Conejo</option>
+              <option value="Conejo">Conejo</option>
               <option value="Cerdo">Cerdo</option>
               <option value="Otro">Otro</option>
             </select>
@@ -76,12 +88,12 @@ const AnimalForm = ({ onCrearAnimal, animalAEditar, onEditarAnimal }) => {
         </div>
 
         <div className={styles.inputGroupFull}>
-          <label htmlFor="historia-animal">Mi Historia</label>
+          <label htmlFor="history-animal">Mi Historia </label>
           <textarea
-            id="historia-animal"
-            name="historia"
+            id="history-animal"
+            name="history"
             placeholder="Contá un poco sobre su personalidad, de dónde viene o qué cuidados necesita..."
-            value={formulario.historia}
+            value={form.history}
             onChange={handleChange}
             rows="4"
             required
@@ -89,13 +101,13 @@ const AnimalForm = ({ onCrearAnimal, animalAEditar, onEditarAnimal }) => {
         </div>
 
         <div className={styles.inputGroupFull}>
-          <label htmlFor="fotos-animal">URL de la Foto</label>
+          <label htmlFor="photos-animal">URL de la Foto</label>
           <input
             type="text"
-            id="fotos-animal"
-            name="fotos"
+            id="photos-animal"
+            name="photos"
             placeholder="https://ejemplo.com"
-            value={formulario.fotos}
+            value={form.photos}
             onChange={handleChange}
           />
         </div>
@@ -103,9 +115,9 @@ const AnimalForm = ({ onCrearAnimal, animalAEditar, onEditarAnimal }) => {
         <div className={styles.actions}>
           <button
             type="submit"
-            className={animalAEditar ? styles.btnEditar : styles.btnCrear}
+            className={animalToEdit ? styles.btnEditar : styles.btnCrear}
           >
-            {animalAEditar ? "Guardar Cambios" : "Crear Mascota"}
+            {animalToEdit ? "Guardar Cambios" : "Crear Mascota"}
           </button>
         </div>
       </form>
