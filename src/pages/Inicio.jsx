@@ -1,3 +1,10 @@
+import { Navigation, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Estilos obligatorios de Swiper
+import "swiper/css";
+import "swiper/css/navigation";
+
 import styles from "./Inicio.module.scss";
 import imagenRescatado from "../assets/rescatado.jpg";
 import refugio from "../assets/refugio.jpg";
@@ -82,20 +89,56 @@ const Inicio = () => {
         </div>
       </section>
 
+      {/* SECCIÓN DEL CARRUSEL GENERAL CON FLECHAS INTEGRADAS */}
       <section className={styles.seccionCards}>
-        <button className={`${styles.arrow} ${styles.arrowLeft}`}> ← </button>
-        <div className={styles.grilla}>
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          spaceBetween={24}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 4000, // Un poquito más de tiempo para dar aire a las fotos internas
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          navigation={{
+            nextEl: ".boton-next-tarjeta",
+            prevEl: ".boton-prev-tarjeta",
+          }}
+          breakpoints={{
+            480: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 24 },
+            1024: { slidesPerView: 4, spaceBetween: 24 },
+            1400: { slidesPerView: 5, spaceBetween: 24 },
+          }}
+          className={styles.grilla}
+        >
           {datosDeLasCards.map((tarjeta) => (
-            <CardsAccion
-              key={tarjeta.id}
-              imagen={tarjeta.imagen}
-              titulo={tarjeta.titulo}
-              descripcion={tarjeta.descripcion}
-              link={tarjeta.link}
-            />
+            <SwiperSlide key={tarjeta.id}>
+              {/* Le pasamos el array de imágenes a tu componente */}
+              <CardsAccion
+                imagenes={tarjeta.imagenes || [tarjeta.imagen]} // Soporta array o la imagen única de antes
+                titulo={tarjeta.titulo}
+                descripcion={tarjeta.descripcion}
+                link={tarjeta.link}
+              />
+            </SwiperSlide>
           ))}
-        </div>
-        <button className={`${styles.arrow} ${styles.arrowRight}`}> → </button>
+        </Swiper>
+
+        {/* Flechas más chicas y posicionadas encima de las tarjetas extremas */}
+        <button
+          className={`${styles.arrow} ${styles.arrowLeft} boton-prev-tarjeta`}
+        >
+          {" "}
+          ‹{" "}
+        </button>
+        <button
+          className={`${styles.arrow} ${styles.arrowRight} boton-next-tarjeta`}
+        >
+          {" "}
+          ›{" "}
+        </button>
       </section>
     </>
   );

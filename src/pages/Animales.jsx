@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-//import datos from "../data/animales";
 import { getAnimals } from "../services/animalesService.js";
 import styles from "./Animales.module.scss";
 import { useQuery } from "@tanstack/react-query";
+import AnimalCard from "../components/cards/AnimalCard/AnimalCard.jsx";
 
 const Animales = () => {
-  const {data, isLoading, isError} = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["animales"],
-    queryFn: getAnimals
-  })
+    queryFn: getAnimals,
+  });
 
   if (isLoading) return <p>Cargando....</p>;
   if (isError) return <p>No se encontraron Animales</p>;
@@ -21,11 +21,9 @@ const Animales = () => {
           to={`/animales/${animal.id}`}
           key={animal.id}
         >
-          <div className={styles.tarjeta}>
-            <h2>{animal.name} </h2>
-            <p>Especie: {animal.address.city}</p>
-            <p>Edad: {animal.email}</p>
-          </div>
+          <AnimalCard animal={animal}>
+            <span>Ver Mas...</span>
+          </AnimalCard>
         </Link>
       ))}
     </div>

@@ -1,33 +1,261 @@
-.contenedor {
-  padding: 6rem 2rem;
+// ... (Todo el código anterior del archivo se mantiene exactamente igual)
 
-  text-align: center;
+.pageWrapper {
+  min-height: 100vh;
+  background-color: #faf5ef;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
+.headerNavegacion {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 40px;
+  box-sizing: border-box;
 
+  @media (max-width: 768px) {
+    padding: 16px 20px;
+  }
+}
 
-//.contenedor{
-  //  padding: 3rem;
- // max-width: 600px;
-//}
-.titulo {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-.nombre {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-.boton {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
+.btnAtras {
+  background: #ffffff;
+  border: 1px solid #e7e0d5;
+  color: #5c5346;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  border: 1px solid #333;
-  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+  transition: all 0.2s ease;
 
   &:hover {
-    background-color: #333;
-    color: white;
+    color: #399be6;
+    border-color: #399be6;
+    transform: translateX(-3px);
+  }
+}
+
+.heroContainer {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto 40px auto;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 20px 50px rgba(139, 122, 100, 0.1);
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.seccionImagen {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+
+  @media (max-width: 1024px) {
+    height: 60vh;
+    min-height: 350px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.badgeEspecie {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  color: #4a3e2e;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.seccionContenido {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+
+  @media (max-width: 768px) {
+    padding: 32px 20px;
+  }
+}
+
+.encabezado {
+  margin-bottom: 32px;
+
+  .subtitulo {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #e67e22;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .nombreAnimal {
+    font-size: 56px;
+    color: #2c251e;
+    margin: 0;
+    font-weight: 800;
+    line-height: 1.1;
+
+    @media (max-width: 480px) {
+      font-size: 40px;
+    }
+  }
+}
+
+.historiaCard {
+  background: #fdfbf7;
+  padding: 32px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  border-left: 4px solid #e67e22;
+  border-top: 1px solid #f5efe6;
+  border-right: 1px solid #f5efe6;
+  border-bottom: 1px solid #f5efe6;
+
+  h3 {
+    font-size: 18px;
+    color: #4a3e2e;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+  }
+
+  .textoHistoria {
+    font-size: 16px;
+    color: #5c5146;
+    line-height: 1.7;
+    margin: 0;
+  }
+}
+
+.llamadoAccion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  p {
+    font-size: 16px;
+    color: #7c6e5f;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.btnAdoptar {
+  background: linear-gradient(135deg, #ff9f1c 0%, #e67e22 100%);
+  color: white;
+  border: none;
+  padding: 18px 36px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3);
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(230, 126, 34, 0.4);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #faf5ef;
+
+  p {
+    font-size: 18px;
+    color: #7c6e5f;
+    font-weight: 500;
+  }
+}
+
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS PARA EL MODAL DE SWEETALERT2
+   ========================================================================== */
+.alertaPopup {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  border-radius: 24px !important;
+  padding: 40px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 20px 60px rgba(74, 62, 46, 0.15) !important;
+  border: 1px solid #f5efe6 !important;
+}
+
+.alertaTitulo {
+  font-size: 24px !important;
+  color: #2c251e !important;
+  font-weight: 800 !important;
+  margin-bottom: 12px !important;
+}
+
+.alertaContenido {
+  font-size: 16px !important;
+  color: #5c5146 !important;
+  line-height: 1.6 !important;
+
+  strong {
+    color: #e67e22 !important;
+  }
+}
+
+.alertaBtnConfirmar {
+  background: linear-gradient(135deg, #ff9f1c 0%, #e67e22 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 14px 32px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin-top: 15px !important;
+  box-shadow: 0 8px 20px rgba(230, 126, 34, 0.2) !important;
+
+  &:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 25px rgba(230, 126, 34, 0.3) !important;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
   }
 }

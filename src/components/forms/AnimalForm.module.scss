@@ -1,0 +1,127 @@
+.formContainer {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formTitle {
+  font-size: 20px;
+  color: #2b2d42;
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-weight: 600;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 12px;
+}
+
+.animalForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inputGroup,
+.inputGroupFull {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+  }
+
+  input,
+  textarea,
+  select {
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #334155;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+
+    &:focus {
+      border-color: #399be6;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(57, 155, 230, 0.15);
+    }
+
+    &::placeholder {
+      color: #94a3b8;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+/* Ocupan todo el ancho del formulario */
+.inputGroupFull {
+  grid-column: span 2;
+
+  @media (max-width: 600px) {
+    grid-column: span 1;
+  }
+}
+
+.actions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+
+  @media (max-width: 600px) {
+    grid-column: span 1;
+  }
+}
+
+/* Botón dinámico según el estado */
+.btnCrear,
+.btnEditar {
+  padding: 12px 28px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btnCrear {
+  background-color: #2ec4b6;
+
+  &:hover {
+    background-color: #20a498;
+  }
+}
+
+.btnEditar {
+  background-color: #ff9f1c;
+
+  &:hover {
+    background-color: #e0850d;
+  }
+}
