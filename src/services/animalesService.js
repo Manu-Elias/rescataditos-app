@@ -17,7 +17,7 @@ import catImage3 from "../assets/gato-gris.jpg";
 // 🐇 Conejos
 import rabbitImage1 from "../assets/conejo-blanco-marron.jpg";
 import rabbitImage2 from "../assets/conejo-marron.jpg";
-import rabbitImage3 from "../assets/conejo-balnco.jpg";
+import rabbitImage3 from "../assets/conejo-blanco.jpg";
 
 // 🐷 Cerdos / Chanchos
 import pigImage1 from "../assets/cerdito-blanco.jpg";
