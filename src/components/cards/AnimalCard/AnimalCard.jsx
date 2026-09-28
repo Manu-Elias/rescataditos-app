@@ -1,18 +1,48 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+// Importamos los estilos nativos obligatorios de Swiper
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import styles from "./AnimalCard.module.scss";
 
 const AnimalCard = ({ animal, children }) => {
-  // Maneja si animal.images es un array o un string directo desde el formulario
-
-  const photoUrl = Array.isArray(animal.photos)
-    ? animal.photos[0]
-    : animal.photos;
+  // Respetamos tu manejo original convirtiendo siempre en array para que gire
+  const photosArray = Array.isArray(animal.photos)
+    ? animal.photos
+    : animal.photos
+      ? [animal.photos]
+      : ["https://unsplash.com"];
 
   return (
     <div className={styles.card}>
+      {/* Tu contenedor de imagen original intacto */}
       <div className={styles.imageContainer}>
-        <img src={photoUrl || "https://unsplash.com"} alt={animal.name} />
+        {/* INYECTAMOS EL CARRUSEL INTERNO EN EL CONTENEDOR */}
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation={true}
+          pagination={{ clickable: true }}
+          observer={true}
+          observeParents={true}
+          className={styles.swiperContenedor}
+        >
+          {photosArray.map((photoUrl, index) => (
+            <SwiperSlide key={index}>
+              <img src={photoUrl} alt={`${animal.name} - ${index + 1}`} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Tu etiqueta flotante original intacta */}
         <span className={styles.speciesTag}>{animal.species}</span>
       </div>
+
+      {/* Toda tu sección de información, historia y botones original sin tocar */}
       <div className={styles.info}>
         <h2 className={styles.name}>{animal.name}</h2>
         <div className={styles.bodyDescription}>

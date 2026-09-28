@@ -48,6 +48,7 @@
   color: #4a5568;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4px);
+  z-index: 10; /* Se asegura de flotar siempre sobre el carrusel */
 }
 
 /* Sección de contenido de texto */
@@ -95,4 +96,36 @@
   gap: 8px;
   width: 100%;
   margin-top: auto;
+}
+
+/* ==========================================================================
+   INYECCIÓN: SOPORTE ESTRICTO PARA EL CARRUSEL INTERNO DE FOTOS
+   ========================================================================== */
+.swiperContenedor {
+  width: 100%;
+  height: 100%;
+
+  :global(.swiper-slide) {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* Ajusta el diseño de las flechas internas y las pinta de blanco */
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    color: #ffffff !important;
+    transform: scale(0.45);
+    z-index: 10;
+  }
+
+  /* Ajusta el color blanco de los puntitos flotantes de la paginación */
+  :global(.swiper-pagination-bullet-active) {
+    background: #ffffff !important;
+  }
 }

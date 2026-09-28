@@ -125,3 +125,50 @@
     background-color: #e0850d;
   }
 }
+/* ==========================================================================
+   AJUSTE DE ESPACIADO PARA EL INPUT DE ARCHIVOS NATIVO
+   ========================================================================== */
+input[type="file"]#photos-animal {
+  padding-top: 8px; /* 👈 Acá se maneja profesionalmente el aire visual del cargador */
+}
+
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS SASS PARA SWEETALERT2 EN EL FORMULARIO
+   ========================================================================== */
+.alertaPopup {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.alertaTitulo {
+  font-size: 22px !important;
+  color: #1e293b !important;
+  font-weight: 700 !important;
+}
+
+.alertaContenido {
+  font-size: 15px !important;
+  color: #64748b !important;
+  line-height: 1.5 !important;
+}
+
+/* Botón de advertencia estilizado a juego con la estética premium del panel */
+.alertaBtnAlerta {
+  background-color: #ff9800 !important; // Naranja cálido de advertencia profesional
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 32px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  box-shadow: 0 4px 6px rgba(255, 152, 0, 0.2) !important;
+
+  &:hover {
+    background-color: #f57c00 !important; // Un tono de naranja más profundo al posar el mouse
+  }
+}

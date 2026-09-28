@@ -1,10 +1,5 @@
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Estilos obligatorios de Swiper
-import "swiper/css";
-import "swiper/css/navigation";
-
 import styles from "./Inicio.module.scss";
 import imagenRescatado from "../assets/rescatado.jpg";
 import refugio from "../assets/refugio.jpg";
