@@ -21,12 +21,12 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
     });
   };
 
-  // Función profesional: Abre tus documentos, lee los archivos binarios y valida un máximo de 3 fotos
+  //  Abre  documentos, lee los archivos binarios y valida un máximo de 3 fotos
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const filesArray = Array.from(e.target.files);
 
-      // CONTROL DE MÁXIMO 3 FOTOS (Estilos delegados 100% a SASS):
+      // CONTROL DE MÁXIMO 3 FOTOS
       if (filesArray.length > 3) {
         Swal.fire({
           title: "¡Límite excedido!",
@@ -62,10 +62,14 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Si elegiste fotos de tu compu las mandamos; si no, dejamos un fallback seguro
     const animalData = {
       ...form,
-      photos: form.photos.length > 0 ? form.photos : ["https://unsplash.com"],
+      photos:
+        form.photos.length > 0
+          ? form.photos
+          : [
+              "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW5pbWFsZXMlMjBqdW50b3N8ZW58MHx8MHx8fDA%3D",
+            ],
     };
 
     if (animalToEdit) {
@@ -94,7 +98,7 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
       });
     } else {
       setFormulario(emptyForm);
-      // Si cancelás o salís de la edición, también limpiamos el input físico por seguridad
+      // Si cancelá o se sale de la edición, también limpiamos el input físico por seguridad
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }

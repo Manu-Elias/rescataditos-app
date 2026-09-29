@@ -1,15 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-
-// Importamos los estilos nativos obligatorios de Swiper
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 import styles from "./AnimalCard.module.scss";
 
 const AnimalCard = ({ animal, children }) => {
-  // Respetamos tu manejo original convirtiendo siempre en array para que gire
   const photosArray = Array.isArray(animal.photos)
     ? animal.photos
     : animal.photos
@@ -18,15 +12,20 @@ const AnimalCard = ({ animal, children }) => {
 
   return (
     <div className={styles.card}>
-      {/* Tu contenedor de imagen original intacto */}
       <div className={styles.imageContainer}>
         {/* INYECTAMOS EL CARRUSEL INTERNO EN EL CONTENEDOR */}
         <Swiper
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={0}
           slidesPerView={1}
           navigation={true}
           pagination={{ clickable: true }}
+          loop={true}
+          autoplay={{
+            delay: 3000, // Avanza cada 3 segundos
+            disableOnInteraction: false, // Continúa el autoplay aunque el usuario toque las flechas o puntos
+            pauseOnMouseEnter: true, // Pausa la animación si el usuario pone el cursor sobre la foto
+          }}
           observer={true}
           observeParents={true}
           className={styles.swiperContenedor}
@@ -38,11 +37,9 @@ const AnimalCard = ({ animal, children }) => {
           ))}
         </Swiper>
 
-        {/* Tu etiqueta flotante original intacta */}
         <span className={styles.speciesTag}>{animal.species}</span>
       </div>
 
-      {/* Toda tu sección de información, historia y botones original sin tocar */}
       <div className={styles.info}>
         <h2 className={styles.name}>{animal.name}</h2>
         <div className={styles.bodyDescription}>
