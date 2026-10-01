@@ -1,21 +1,14 @@
 import { Link } from "react-router-dom";
-import { getAnimals } from "../services/animalesService.js";
 import styles from "./Animales.module.scss";
-import { useQuery } from "@tanstack/react-query";
+import useAnimalStore from "../store/useAnimalStore.js";
 import AnimalCard from "../components/cards/AnimalCard/AnimalCard.jsx";
 
 const Animales = () => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["animales"],
-    queryFn: getAnimals,
-  });
-
-  if (isLoading) return <p>Cargando....</p>;
-  if (isError) return <p>No se encontraron Animales</p>;
+  const animals = useAnimalStore((state) => state.animals);
 
   return (
     <div className={styles.contenedor}>
-      {data.map((animal) => (
+      {animals.map((animal) => (
         <Link
           className={styles.link}
           to={`/animales/${animal.id}`}

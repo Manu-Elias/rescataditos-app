@@ -1,15 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
+import useAnimalStore from "../store/useAnimalStore";
 import Swal from "sweetalert2";
 import styles from "./DetalleAnimal.module.scss";
 
 const DetalleAnimal = () => {
-  const queryClient = useQueryClient();
-  const animales = queryClient.getQueryData(["animales"]);
+  const animals = useAnimalStore((state) => state.animals);
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const animal = animales?.find((animal) => animal.id === Number(id));
+  const animal = animals.find((animal) => animal.id === Number(id));
 
   if (!animal) {
     return (

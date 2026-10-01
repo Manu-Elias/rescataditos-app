@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimalForm from "../../components/forms/AnimalForm";
-import { getAnimals } from "../../services/animalesService";
 import AnimalCard from "../../components/cards/AnimalCard/AnimalCard";
 import useAnimalStore from "../../store/useAnimalStore";
 import styles from "./AdminDashboard.module.scss";
@@ -12,18 +10,10 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   const animals = useAnimalStore((state) => state.animals);
-  const setAnimals = useAnimalStore((state) => state.setAnimals);
-
   const deleteAnimal = useAnimalStore((state) => state.deleteAnimal);
   const addAnimal = useAnimalStore((state) => state.addAnimal);
   const updateAnimal = useAnimalStore((state) => state.updateAnimal);
-
   const [editingAnimal, setEditingAnimal] = useState(null);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["animals"],
-    queryFn: getAnimals,
-  });
 
   // Función  para Cerrar Sesión con SweetAlert2
   const handleLogout = () => {
@@ -95,18 +85,6 @@ const AdminDashboard = () => {
     updateAnimal(modifiedAnimal);
     setEditingAnimal(null);
   };
-
-  useEffect(() => {
-    const savedData = localStorage.getItem("animals");
-
-    if (!savedData && !isLoading) {
-      setAnimals(data);
-      localStorage.setItem("animals", JSON.stringify(data));
-    } else if (savedData) {
-      const savedAnimals = JSON.parse(savedData);
-      setAnimals(savedAnimals);
-    }
-  }, [data, isLoading, setAnimals]);
 
   return (
     <div className={styles.dashboardWrapper}>

@@ -9,8 +9,30 @@ import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/login/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
+import { useQuery } from "@tanstack/react-query";
+import { getAnimals } from "./services/animalesService";
+import useAnimalStore from "./store/useAnimalStore";
+import { useEffect } from "react";
 
 const App = () => {
+  const setAnimals = useAnimalStore((state) => state.setAnimals);
+  const { data, isLoading } = useQuery({
+    queryKey: ["animals"],
+    queryFn: getAnimals,
+  });
+
+  useEffect(() => {
+    const savedData = localStorage.getItem("animals");
+
+    if (!savedData && !isLoading) {
+      setAnimals(data);
+      localStorage.setItem("animals", JSON.stringify(data));
+    } else if (savedData) {
+      const savedAnimals = JSON.parse(savedData);
+      setAnimals(savedAnimals);
+    }
+  }, [data, isLoading, setAnimals]);
+
   return (
     <BrowserRouter>
       <Routes>
