@@ -48,16 +48,13 @@ const especiesPlaceholder = [
   "chanchito",
   "conejo",
 ];
-
 const mapearUserAAnimal = (user) => {
   const species = especiesPlaceholder[user.id % especiesPlaceholder.length];
   const history = `${user.name} fue rescatado y está esperando un hogar lleno de amor.`;
-  // const photos = [`https://loremflickr.com/200/200/${species}?lock=${user.id}`];
 
   const availablePhotos =
     animalImagesBySpecies[species] || animalImagesBySpecies.general;
-  const selectedPhoto = availablePhotos[user.id % availablePhotos.length];
-  const photos = [selectedPhoto];
+  const photos = availablePhotos.slice(0, 3);
 
   return {
     id: user.id,
