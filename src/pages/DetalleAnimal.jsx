@@ -24,7 +24,9 @@ const DetalleAnimal = () => {
     );
   }
 
-  const urlFoto = Array.isArray(animal.fotos) ? animal.fotos : animal.fotos;
+  const urlPhoto = Array.isArray(animal.photos)
+    ? animal.photos[0]
+    : animal.photos;
 
   // Función para manejar el clic de adopción de forma limpia
   const handleAdoptarClick = () => {
@@ -57,10 +59,13 @@ const DetalleAnimal = () => {
       <main className={styles.heroContainer}>
         <div className={styles.seccionImagen}>
           <img
-            src={urlFoto || "https://unsplash.com"}
-            alt={`Foto de ${animal.nombre}`}
+            src={
+              urlPhoto ||
+              "https://media.istockphoto.com/id/2266531995/photo/black-dog-and-cat-silhouette-pet-companion-icon-illustration.jpg?s=2048x2048&w=is&k=20&c=zLCWi8y3cQXK7CK8tfblhpBQlNYrh6jYdTp6iPG031E="
+            }
+            alt={`Foto de ${animal.name}`}
           />
-          <div className={styles.badgeEspecie}>{animal.especie}</div>
+          <div className={styles.badgeEspecie}>{animal.species}</div>
         </div>
 
         <div className={styles.seccionContenido}>
@@ -68,18 +73,18 @@ const DetalleAnimal = () => {
             <span className={styles.subtitulo}>
               Conocé a tu próximo compañero
             </span>
-            <h1 className={styles.nombreAnimal}>{animal.nombre}</h1>
+            <h1 className={styles.nombreAnimal}>{animal.name}</h1>
           </div>
 
           <div className={styles.historiaCard}>
             <h3>Un pedacito de mi historia</h3>
-            <p className={styles.textoHistoria}>{animal.historia}</p>
+            <p className={styles.textoHistoria}>{animal.history}</p>
           </div>
 
           <div className={styles.llamadoAccion}>
-            <p>¿Sentís que {animal.nombre} podría ser parte de tu familia?</p>
+            <p>¿Sentís que {animal.name} podría ser parte de tu familia?</p>
             <button className={styles.btnAdoptar} onClick={handleAdoptarClick}>
-              🐾 Quiero Adoptar a {animal.nombre}
+              🐾 Quiero Adoptar a {animal.name}
             </button>
           </div>
         </div>
