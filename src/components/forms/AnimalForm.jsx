@@ -9,6 +9,21 @@ const emptyForm = {
   photos: [], // Inicializa como un array vacío listo para guardar múltiples imágenes locales
 };
 
+const convertFileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+
+    reader.onerror = () => {
+      reject(reader.error);
+    };
+
+    reader.readAsDataURL(file);
+  });
+};
+
 const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
   const [form, setFormulario] = useState(emptyForm);
   const fileInputRef = useRef(null); // Control remoto para apuntar al input de archivos físico
@@ -22,7 +37,7 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
   };
 
   //  Abre  documentos, lee los archivos binarios y valida un máximo de 3 fotos
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
       const filesArray = Array.from(e.target.files);
 
@@ -48,14 +63,38 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
         }
         return;
       }
+      // CONVERSIÓN A BASE64 EN PARALELO CON MANEJO DE ERRORES
+      try {
+        const base64Promises = filesArray.map((file) =>
+          convertFileToBase64(file),
+        );
+        const base64Urls = await Promise.all(base64Promises);
 
-      // Convertimos cada archivo real en una URL virtual temporal que Swiper pueda leer
-      const localUrls = filesArray.map((file) => URL.createObjectURL(file));
+        setFormulario({
+          ...form,
+          photos: base64Urls, // Guardamos el array de imágenes  directamente en el estado
+        });
+      } catch (error) {
+        console.error("Error al procesar las imagenes", error);
 
-      setFormulario({
-        ...form,
-        photos: localUrls, // Guardamos el array de imágenes virtuales directamente en el estado
-      });
+        Swal.fire({
+          title: "¡Error al procesar!",
+          text: "Hubo un problema al leer una o más fotos. Por favor, intentalo de nuevo.",
+          icon: "error",
+          confirmButtonText: "Entendido",
+          buttonsStyling: false,
+          customClass: {
+            popup: styles.alertaPopup,
+            title: styles.alertaTitulo,
+            htmlContainer: styles.alertaContenido,
+            confirmButton: styles.alertaBtnAlerta,
+          },
+        });
+
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+      }
     }
   };
 
