@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Animales.module.scss";
-import useAnimalStore from "../store/useAnimalStore.js";
+import useAnimalStore from "../features/animals/store/useAnimalStore.js";
 import AnimalCard from "../components/cards/AnimalCard/AnimalCard.jsx";
 
 const Animales = () => {

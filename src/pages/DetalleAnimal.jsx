@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import useAnimalStore from "../store/useAnimalStore";
+import useAnimalStore from "../features/animals/store/useAnimalStore";
 import Swal from "sweetalert2";
 import styles from "./DetalleAnimal.module.scss";
 

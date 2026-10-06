@@ -3,30 +3,30 @@ import axios from "axios";
 // ==========================================================================
 
 // 🐶 Perros
-import dogImage1 from "../assets/jason-pofahl-3szw_YfFzK4-unsplash.jpg";
-import dogImage2 from "../assets/rescatado.jpg";
-import dogImage3 from "../assets/judy-beth-morris-nEPTC5FmPQo-unsplash.jpg";
-import dogImage4 from "../assets/gustavo-sanchez-HelJwHKKvj0-unsplash.jpg";
-import dogImage5 from "../assets/anastasiia-dudka-49Qof2WLef0-unsplash.jpg";
+import dogImage1 from "../../../assets/jason-pofahl-3szw_YfFzK4-unsplash.jpg";
+import dogImage2 from "../../../assets/rescatado.jpg";
+import dogImage3 from "../../../assets/judy-beth-morris-nEPTC5FmPQo-unsplash.jpg";
+import dogImage4 from "../../../assets/gustavo-sanchez-HelJwHKKvj0-unsplash.jpg";
+import dogImage5 from "../../../assets/anastasiia-dudka-49Qof2WLef0-unsplash.jpg";
 
 // 🐱 Gatos
-import catImage1 from "../assets/gato-blanco-negro.jpg";
-import catImage2 from "../assets/gato-blanco.jpg";
-import catImage3 from "../assets/gato-gris.jpg";
+import catImage1 from "../../../assets/gato-blanco-negro.jpg";
+import catImage2 from "../../../assets/gato-blanco.jpg";
+import catImage3 from "../../../assets/gato-gris.jpg";
 
 // 🐇 Conejos
-import rabbitImage1 from "../assets/conejo-blanco-marron.jpg";
-import rabbitImage2 from "../assets/conejo-marron.jpg";
-import rabbitImage3 from "../assets/conejo-blanco.jpg";
+import rabbitImage1 from "../../../assets/conejo-blanco-marron.jpg";
+import rabbitImage2 from "../../../assets/conejo-marron.jpg";
+import rabbitImage3 from "../../../assets/conejo-blanco.jpg";
 
 // 🐷 Cerdos / Chanchos
-import pigImage1 from "../assets/cerdito-blanco.jpg";
-import pigImage2 from "../assets/cerdito.jpg";
-import pigImage3 from "../assets/cerdo-adulto.jpg";
+import pigImage1 from "../../../assets/cerdito-blanco.jpg";
+import pigImage2 from "../../../assets/cerdito.jpg";
+import pigImage3 from "../../../assets/cerdo-adulto.jpg";
 
 // 🏠 Refugio y Equipo (Generales)
-import generalImage1 from "../assets/refugio.jpg";
-import generalImage2 from "../assets/equipo-rescataditdos.jpg";
+import generalImage1 from "../../../assets/refugio.jpg";
+import generalImage2 from "../../../assets/equipo-rescataditdos.jpg";
 
 // ==========================================================================
 // DICCIONARIO DE IMÁGENES POR ESPECIE (Mapeo Letra por Letra)

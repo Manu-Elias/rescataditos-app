@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimalForm from "../../components/forms/AnimalForm";
 import AnimalCard from "../../components/cards/AnimalCard/AnimalCard";
-import useAnimalStore from "../../store/useAnimalStore";
+import useAnimalStore from "../../features/animals/store/useAnimalStore";
 import styles from "./AdminDashboard.module.scss";
 import Swal from "sweetalert2";
 

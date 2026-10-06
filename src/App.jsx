@@ -10,8 +10,8 @@ import Login from "./pages/login/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
 import { useQuery } from "@tanstack/react-query";
-import { getAnimals } from "./services/animalesService";
-import useAnimalStore from "./store/useAnimalStore";
+import { getAnimals } from "./features/animals/services/animalesService";
+import useAnimalStore from "./features/animals/store/useAnimalStore";
 import { useEffect } from "react";
 
 const App = () => {
