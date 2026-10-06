@@ -4,7 +4,8 @@ import Swal from "sweetalert2"; // Importamos SweetAlert2 para controlar el lím
 
 const emptyForm = {
   name: "",
-  species: "Perro",
+  species: "dog",
+  customSpecies: "",
   history: "",
   photos: [], // Inicializa como un array vacío listo para guardar múltiples imágenes locales
 };
@@ -101,8 +102,14 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const finalSpecies =
+      form.species === "other"
+        ? form.customSpecies.trim().toLowerCase() || "other"
+        : form.species;
+
     const animalData = {
       ...form,
+      species: finalSpecies,
       photos:
         form.photos.length > 0
           ? form.photos
@@ -173,15 +180,30 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
               value={form.species}
               onChange={handleChange}
             >
-              <option value="Perro">Perro</option>
-              <option value="Gato">Gato</option>
-              <option value="Conejo">Conejo</option>
-              <option value="Cerdo">Cerdo</option>
-              <option value="Otro">Otro</option>
+              <option value="dog">Perro</option>
+              <option value="cat">Gato</option>
+              <option value="rabbit">Conejo</option>
+              <option value="pig">Cerdo</option>
+              <option value="other">Otro</option>
             </select>
           </div>
         </div>
 
+        {/* 🟢 Si elige "other", mostramos la caja de texto para especificar */}
+        {form.species === "other" && (
+          <div className={styles.inputGroup}>
+            <label htmlFor="customSpecies-animal">¿Qué especie es?</label>
+            <input
+              type="text"
+              id="customSpecies-animal"
+              name="customSpecies"
+              placeholder="Ej: Hurón, Loro, Cobaya..."
+              value={form.customSpecies || ""}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        )}
         <div className={styles.inputGroupFull}>
           <label htmlFor="history-animal">Mi Historia </label>
           <textarea

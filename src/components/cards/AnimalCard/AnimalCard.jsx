@@ -3,6 +3,13 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 import styles from "./AnimalCard.module.scss";
 
+const speciesLabels = {
+  dog: "Perro",
+  cat: "Gato",
+  rabbit: "Conejo",
+  pig: "Cerdo",
+  other: "Otro",
+};
 const AnimalCard = ({ animal, children }) => {
   const photosArray = Array.isArray(animal.photos)
     ? animal.photos
@@ -37,7 +44,9 @@ const AnimalCard = ({ animal, children }) => {
           ))}
         </Swiper>
 
-        <span className={styles.speciesTag}>{animal.species}</span>
+        <span className={styles.speciesTag}>
+          {speciesLabels[animal.species] || animal.species || "Otro"}
+        </span>
       </div>
 
       <div className={styles.info}>
