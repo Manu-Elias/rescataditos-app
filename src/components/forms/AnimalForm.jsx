@@ -25,12 +25,12 @@ const convertFileToBase64 = (file) => {
 };
 
 const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
-  const [form, setFormulario] = useState(emptyForm);
+  const [form, setForm] = useState(emptyForm);
   const fileInputRef = useRef(null); // Control remoto para apuntar al input de archivos físico
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormulario({
+    setForm({
       ...form,
       [name]: value,
     });
@@ -70,7 +70,7 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
         );
         const base64Urls = await Promise.all(base64Promises);
 
-        setFormulario({
+        setForm({
           ...form,
           photos: base64Urls, // Guardamos el array de imágenes  directamente en el estado
         });
@@ -115,7 +115,7 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
       onEditAnimal(animalData);
     } else {
       onCreateAnimal(animalData);
-      setFormulario(emptyForm);
+      setForm(emptyForm);
 
       // Reseteamos el input del navegador físico de raíz al crear con éxito
       if (fileInputRef.current) {
@@ -127,7 +127,7 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
   useEffect(() => {
     if (animalToEdit) {
       // Si editamos, nos aseguramos de que photos siempre sea un array para que no rompa Swiper
-      setFormulario({
+      setForm({
         ...animalToEdit,
         photos: Array.isArray(animalToEdit.photos)
           ? animalToEdit.photos
@@ -136,7 +136,7 @@ const AnimalForm = ({ onCreateAnimal, animalToEdit, onEditAnimal }) => {
             : [],
       });
     } else {
-      setFormulario(emptyForm);
+      setForm(emptyForm);
       // Si cancelá o se sale de la edición, también limpiamos el input físico por seguridad
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
