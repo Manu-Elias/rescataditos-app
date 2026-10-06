@@ -32,21 +32,21 @@ import generalImage2 from "../../../assets/equipo-rescataditdos.jpg";
 // DICCIONARIO DE IMÁGENES POR ESPECIE (Mapeo Letra por Letra)
 // ==========================================================================
 const animalImagesBySpecies = {
-  perro: [dogImage1, dogImage2, dogImage3, dogImage4, dogImage5],
-  gato: [catImage1, catImage2, catImage3],
-  conejo: [rabbitImage1, rabbitImage2, rabbitImage3],
-  chanchito: [pigImage1, pigImage2, pigImage3],
+  dog: [dogImage1, dogImage2, dogImage3, dogImage4, dogImage5],
+  cat: [catImage1, catImage2, catImage3],
+  rabbit: [rabbitImage1, rabbitImage2, rabbitImage3],
+  pig: [pigImage1, pigImage2, pigImage3],
   general: [generalImage1, generalImage2],
 };
 
 const especiesPlaceholder = [
-  "perro",
-  "gato",
-  "conejo",
-  "chanchito",
-  "perro",
-  "chanchito",
-  "conejo",
+  "dog",
+  "cat",
+  "rabbit",
+  "pig",
+  "dog",
+  "pig",
+  "rabbit",
 ];
 const mapearUserAAnimal = (user) => {
   const species = especiesPlaceholder[user.id % especiesPlaceholder.length];
