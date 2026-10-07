@@ -32,7 +32,7 @@ const DetalleAnimal = () => {
   const handleAdoptarClick = () => {
     Swal.fire({
       title: "¡Excelente decisión! 🐾",
-      html: `Estamos muy felices de que quieras darle un hogar a <strong>${animal.nombre}</strong>.<br><br>En breve un miembro de nuestro equipo se pondrá en contacto con vos para iniciar el proceso de adopción.`,
+      html: `Estamos muy felices de que quieras darle un hogar a <strong>${animal.name}</strong>.<br><br>En breve un miembro de nuestro equipo se pondrá en contacto con vos para iniciar el proceso de adopción.`,
       icon: "success",
       confirmButtonText: "¡Esperaré con ansias!",
       buttonsStyling: false, // Apaga los estilos nativos de SweetAlert para los botones
