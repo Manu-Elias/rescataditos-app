@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import useAnimalStore from "../features/animals/store/useAnimalStore";
+import { translateSpecies } from "../features/animals/utils/translateSpecies";
 import Swal from "sweetalert2";
 import styles from "./DetalleAnimal.module.scss";
 
@@ -65,7 +66,9 @@ const DetalleAnimal = () => {
             }
             alt={`Foto de ${animal.name}`}
           />
-          <div className={styles.badgeEspecie}>{animal.species}</div>
+          <div className={styles.badgeEspecie}>
+            {translateSpecies(animal.species)}
+          </div>
         </div>
 
         <div className={styles.seccionContenido}>
