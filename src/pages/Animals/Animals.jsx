@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./Animales.module.scss";
-import useAnimalStore from "../features/animals/store/useAnimalStore.js";
-import AnimalCard from "../components/cards/AnimalCard/AnimalCard.jsx";
+import styles from "./styles/Animals.module.scss";
+import useAnimalStore from "../../features/animals/store/useAnimalStore.js";
+import AnimalCard from "../../components/cards/AnimalCard/AnimalCard.jsx";
 
-const Animales = () => {
+const Animals = () => {
   const animals = useAnimalStore((state) => state.animals);
 
   return (
@@ -23,4 +23,4 @@ const Animales = () => {
   );
 };
 
-export default Animales;
+export default Animals;
