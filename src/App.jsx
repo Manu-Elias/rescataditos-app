@@ -4,7 +4,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Animals from "./pages/Animals/Animals";
 import AnimalDetail from "./pages/AnimalDetail/AnimalDetail";
 import Adoption from "./pages/Adoption/Adoption";
-import Donaciones from "./pages/Donaciones";
+import Donations from "./pages/Donations/Donations";
 import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/login/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -48,7 +48,7 @@ const App = () => {
           <Route path="animales" element={<Animals />} />
           <Route path="animales/:id" element={<AnimalDetail />} />
           <Route path="adopcion" element={<Adoption />} />
-          <Route path="donaciones" element={<Donaciones />} />
+          <Route path="donaciones" element={<Donations />} />
         </Route>
       </Routes>
     </BrowserRouter>
