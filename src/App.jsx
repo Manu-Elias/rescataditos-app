@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Animals from "./pages/Animals/Animals";
 import AnimalDetail from "./pages/AnimalDetail/AnimalDetail";
-import Adopcion from "./pages/Adopcion";
+import Adoption from "./pages/Adoption/Adoption";
 import Donaciones from "./pages/Donaciones";
 import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/login/Login";
@@ -47,7 +47,7 @@ const App = () => {
           <Route path="nosotros" element={<AboutUs />} />
           <Route path="animales" element={<Animals />} />
           <Route path="animales/:id" element={<AnimalDetail />} />
-          <Route path="adopcion" element={<Adopcion />} />
+          <Route path="adopcion" element={<Adoption />} />
           <Route path="donaciones" element={<Donaciones />} />
         </Route>
       </Routes>
