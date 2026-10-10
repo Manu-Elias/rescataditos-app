@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Inicio from "./pages/Inicio";
+import Home from "./pages/Home/Home";
 import Nosotros from "./pages/Nosotros";
 import Animals from "./pages/Animals/Animals";
 import AnimalDetail from "./pages/AnimalDetail/AnimalDetail";
@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Inicio />} />
+          <Route index element={<Home />} />
           <Route path="nosotros" element={<Nosotros />} />
           <Route path="animales" element={<Animals />} />
           <Route path="animales/:id" element={<AnimalDetail />} />

@@ -1,12 +1,12 @@
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import styles from "./Inicio.module.scss";
-import imagenRescatado from "../assets/rescatado.jpg";
-import refugio from "../assets/refugio.jpg";
-import CardsAccion from "../components/CardsAccion";
-import datosDeLasCards from "../data/cards";
+import styles from "./styles/Home.module.scss";
+import imagenRescatado from "../../assets/rescatado.jpg";
+import refugio from "../../assets/refugio.jpg";
+import CardsAccion from "../../components/CardsAccion";
+import cardData from "../../data/cards";
 
-const Inicio = () => {
+const Home = () => {
   return (
     <>
       <section className={styles.hero}>
@@ -108,14 +108,14 @@ const Inicio = () => {
           }}
           className={styles.grilla}
         >
-          {datosDeLasCards.map((tarjeta) => (
-            <SwiperSlide key={tarjeta.id}>
+          {cardData.map((card) => (
+            <SwiperSlide key={card.id}>
               {/* Le pasamos el array de imágenes a tu componente */}
               <CardsAccion
-                imagenes={tarjeta.imagenes || [tarjeta.imagen]} // Soporta array o la imagen única de antes
-                titulo={tarjeta.titulo}
-                descripcion={tarjeta.descripcion}
-                link={tarjeta.link}
+                imagenes={card.imagenes}
+                titulo={card.titulo}
+                descripcion={card.descripcion}
+                link={card.link}
               />
             </SwiperSlide>
           ))}
@@ -139,4 +139,4 @@ const Inicio = () => {
   );
 };
 
-export default Inicio;
+export default Home;
