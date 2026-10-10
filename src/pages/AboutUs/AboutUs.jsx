@@ -1,6 +1,6 @@
-import styles from "./Nosotros.module.scss";
-import equipoOng from "../assets/equipo-rescataditdos.jpg";
-const Nosotros = () => {
+import styles from "./styles/AboutUs.module.scss";
+import equipoOng from "../../assets/equipo-rescataditdos.jpg";
+const AboutUs = () => {
   return (
     <main>
       <section className={styles.historiaOng}>
@@ -54,4 +54,4 @@ const Nosotros = () => {
   );
 };
 
-export default Nosotros;
+export default AboutUs;
