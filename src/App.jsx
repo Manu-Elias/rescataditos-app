@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import Nosotros from "./pages/Nosotros";
 import Animals from "./pages/Animals/Animals";
-import DetalleAnimal from "./pages/DetalleAnimal";
+import AnimalDetail from "./pages/AnimalDetail/AnimalDetail";
 import Adopcion from "./pages/Adopcion";
 import Donaciones from "./pages/Donaciones";
 import MainLayout from "./layouts/MainLayout";
@@ -46,7 +46,7 @@ const App = () => {
           <Route index element={<Inicio />} />
           <Route path="nosotros" element={<Nosotros />} />
           <Route path="animales" element={<Animals />} />
-          <Route path="animales/:id" element={<DetalleAnimal />} />
+          <Route path="animales/:id" element={<AnimalDetail />} />
           <Route path="adopcion" element={<Adopcion />} />
           <Route path="donaciones" element={<Donaciones />} />
         </Route>

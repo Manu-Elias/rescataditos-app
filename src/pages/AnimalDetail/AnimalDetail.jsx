@@ -1,10 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import useAnimalStore from "../features/animals/store/useAnimalStore";
-import { translateSpecies } from "../features/animals/utils/translateSpecies";
+import useAnimalStore from "../../features/animals/store/useAnimalStore";
+import { translateSpecies } from "../../features/animals/utils/translateSpecies";
 import Swal from "sweetalert2";
-import styles from "./DetalleAnimal.module.scss";
+import styles from "./styles/AnimalDetail.module.scss";
 
-const DetalleAnimal = () => {
+const AnimalDetail = () => {
   const animals = useAnimalStore((state) => state.animals);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const DetalleAnimal = () => {
     : animal.photos;
 
   // Función para manejar el clic de adopción de forma limpia
-  const handleAdoptarClick = () => {
+  const handleAdoptClick = () => {
     Swal.fire({
       title: "¡Excelente decisión! 🐾",
       html: `Estamos muy felices de que quieras darle un hogar a <strong>${animal.name}</strong>.<br><br>En breve un miembro de nuestro equipo se pondrá en contacto con vos para iniciar el proceso de adopción.`,
@@ -86,7 +86,7 @@ const DetalleAnimal = () => {
 
           <div className={styles.llamadoAccion}>
             <p>¿Sentís que {animal.name} podría ser parte de tu familia?</p>
-            <button className={styles.btnAdoptar} onClick={handleAdoptarClick}>
+            <button className={styles.btnAdoptar} onClick={handleAdoptClick}>
               🐾 Quiero Adoptar a {animal.name}
             </button>
           </div>
@@ -96,4 +96,4 @@ const DetalleAnimal = () => {
   );
 };
 
-export default DetalleAnimal;
+export default AnimalDetail;
