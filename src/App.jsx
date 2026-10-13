@@ -8,7 +8,7 @@ import Donations from "./pages/Donations/Donations";
 import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/login/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import { useQuery } from "@tanstack/react-query";
 import { getAnimals } from "./features/animals/services/animalesService";
 import useAnimalStore from "./features/animals/store/useAnimalStore";
