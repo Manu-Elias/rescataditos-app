@@ -6,7 +6,7 @@ import AnimalDetail from "./pages/AnimalDetail/AnimalDetail";
 import Adoption from "./pages/Adoption/Adoption";
 import Donations from "./pages/Donations/Donations";
 import MainLayout from "./layouts/MainLayout";
-import Login from "./pages/login/Login";
+import Login from "./pages/Login/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import { useQuery } from "@tanstack/react-query";
