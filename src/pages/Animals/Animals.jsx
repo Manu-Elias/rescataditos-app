@@ -7,10 +7,10 @@ const Animals = () => {
   const animals = useAnimalStore((state) => state.animals);
 
   return (
-    <div className={styles.contenedor}>
+    <div className={styles.animalscontainer}>
       {animals.map((animal) => (
         <Link
-          className={styles.link}
+          className={styles.animallink}
           to={`/animales/${animal.id}`}
           key={animal.id}
         >

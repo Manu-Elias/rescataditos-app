@@ -1,23 +1,11 @@
-.contenedor {
+.animalscontainer {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 8rem 1rem;
 }
 
-.link {
+.animallink {
   text-decoration: none;
   color: rgb(153, 62, 62);
-}
-
-.tarjeta {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 1rem;
-  width: 250px;
-  min-height: 150px;
-
-  &:hover {
-    background-color: #f3f3f3;
-  }
 }
