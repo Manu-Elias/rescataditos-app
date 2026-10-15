@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./styles/Home.module.scss";
 import rescuedImage from "../../assets/rescatado.jpg";
 import shelterImage from "../../assets/refugio.jpg";
-import CardsAccion from "../../components/CardsAccion";
+import ActionCard from "../../components/cards/ActionCard/ActionCard";
 import cardData from "../../data/cards";
 
 const Home = () => {
@@ -97,8 +97,8 @@ const Home = () => {
             pauseOnMouseEnter: true,
           }}
           navigation={{
-            nextEl: ".boton-next-tarjeta",
-            prevEl: ".boton-prev-tarjeta",
+            nextEl: ".button-next-card",
+            prevEl: ".button-prev-card",
           }}
           breakpoints={{
             480: { slidesPerView: 2, spaceBetween: 20 },
@@ -111,7 +111,7 @@ const Home = () => {
           {cardData.map((card) => (
             <SwiperSlide key={card.id}>
               {/* Le pasamos el array de imágenes a tu componente */}
-              <CardsAccion
+              <ActionCard
                 imagenes={card.imagenes}
                 titulo={card.titulo}
                 descripcion={card.descripcion}
@@ -123,13 +123,13 @@ const Home = () => {
 
         {/* Flechas más chicas y posicionadas encima de las tarjetas extremas */}
         <button
-          className={`${styles.carouselArrow} ${styles.arrowLeft} boton-prev-tarjeta`}
+          className={`${styles.carouselArrow} ${styles.arrowLeft} button-prev-card`}
         >
           {" "}
           ‹{" "}
         </button>
         <button
-          className={`${styles.carouselArrow} ${styles.arrowRight} boton-next-tarjeta`}
+          className={`${styles.carouselArrow} ${styles.arrowRight} button-next-card`}
         >
           {" "}
           ›{" "}

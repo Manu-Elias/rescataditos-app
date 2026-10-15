@@ -1,4 +1,4 @@
-.cardContenedor {
+.card {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
@@ -10,26 +10,26 @@
   box-sizing: border-box;
 }
 
-.imagenWrapper {
+.imageWrapper {
   width: 100%;
   height: 200px;
   position: relative;
   overflow: hidden;
 }
 
-.fotoCarruselInterno {
+.swiperContainer {
   width: 100%;
   height: 100%;
 }
 
-.cardFoto {
+.cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.cardCuerpo {
+.cardBody {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,7 @@
 }
 /* Poné las dimensiones de la foto fijas para que las flechas apunten exacto ahí */
 
-.btnLink {
+.actionButton {
   display: inline-block;
   background-color: orange;
   color: white;
