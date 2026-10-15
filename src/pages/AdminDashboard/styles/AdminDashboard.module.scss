@@ -26,7 +26,7 @@
 }
 
 /* Botón de salir estilizado */
-.botonSalir {
+.logoutButton {
   background-color: transparent;
   color: #64748b;
   border: 1px solid #cbd5e1;
@@ -89,7 +89,7 @@
 }
 
 /* Botones originales optimizados */
-.botonPeligro {
+.dangerButton {
   background-color: #353131;
   color: white;
   border: none;
@@ -107,7 +107,7 @@
   }
 }
 
-.botonSecundario {
+.secondaryButton {
   background-color: #e69239;
   color: white;
   border: none;
@@ -128,7 +128,7 @@
 /* ==========================================================================
    ESTILOS EXCLUSIVOS SASS PARA SWEETALERT2 EN EL ADMIN
    ========================================================================== */
-.alertaPopup {
+.alertPopup {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
   border-radius: 16px !important;
   padding: 32px !important;
@@ -136,19 +136,19 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
 }
 
-.alertaTitulo {
+.alertTitle {
   font-size: 22px !important;
   color: #1e293b !important;
   font-weight: 700 !important;
 }
 
-.alertaContenido {
+.alertContent {
   font-size: 15px !important;
   color: #64748b !important;
   line-height: 1.5 !important;
 }
 
-.alertaBtnConfirmar {
+.alertConfirmButton {
   background-color: #e63946 !important;
   color: white !important;
   border: none !important;
@@ -165,7 +165,7 @@
   }
 }
 
-.alertaBtnCancelar {
+.alertCancelButton {
   background-color: #f1f5f9 !important;
   color: #475569 !important;
   border: 1px solid #cbd5e1 !important;
@@ -182,7 +182,7 @@
   }
 }
 
-.alertaBtnExito {
+.alertSuccessButton {
   background-color: #399be6 !important;
   color: white !important;
   border: none !important;

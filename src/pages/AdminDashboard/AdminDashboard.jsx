@@ -27,11 +27,11 @@ const AdminDashboard = () => {
       reverseButtons: true, // Deja el botón de confirmar a la derecha
       buttonsStyling: false, // Apaga estilos nativos
       customClass: {
-        popup: styles.alertaPopup,
-        title: styles.alertaTitulo,
-        htmlContainer: styles.alertaContenido,
-        confirmButton: styles.alertaBtnConfirmar, // Podés mapearlo a tus estilos de confirmar
-        cancelButton: styles.alertaBtnCancelar, // O usar styles.alertaBtnPeligro / Salir si tenés
+        popup: styles.alertPopup,
+        title: styles.alertTitle,
+        htmlContainer: styles.alertContent,
+        confirmButton: styles.alertConfirmButton,
+        cancelButton: styles.alertCancelButton,
       },
     }).then((result) => {
       // Si el usuario hace clic en "Sí, salir"
@@ -62,11 +62,11 @@ const AdminDashboard = () => {
       cancelButtonText: "Cancelar",
       reverseButtons: true,
 
-      // Vinculamos las clases de tu módulo de SASS directamente
+      // Vinculamos las clases de SASS directamente
       customClass: {
-        popup: styles.alertaPopup,
-        confirmButton: styles.alertaBtnConfirmar,
-        cancelButton: styles.alertaBtnCancelar,
+        popup: styles.alertPopup,
+        confirmButton: styles.alertConfirmButton,
+        cancelButton: styles.alertCancelButton,
       },
       buttonsStyling: false, // Le dice a SweetAlert que no use sus estilos por defecto en los botones
     }).then((result) => {
@@ -93,7 +93,7 @@ const AdminDashboard = () => {
         <div className={styles.navbarBrand}>
           <span>🐾 Panel Control</span>
         </div>
-        <button className={styles.botonSalir} onClick={handleLogout}>
+        <button className={styles.logoutButton} onClick={handleLogout}>
           Cerrar Sesión
         </button>
       </nav>
@@ -114,7 +114,7 @@ const AdminDashboard = () => {
             <AnimalCard animal={animal} key={animal.id}>
               <div className={styles.buttonGroup}>
                 <button
-                  className={styles.botonSecundario}
+                  className={styles.secondaryButton}
                   onClick={() => {
                     handleEditAnimal(animal.id);
                   }}
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
                   Editar Animal
                 </button>
                 <button
-                  className={styles.botonPeligro}
+                  className={styles.dangerButton}
                   onClick={() => {
                     handleDeleteAnimal(animal.id);
                   }}
