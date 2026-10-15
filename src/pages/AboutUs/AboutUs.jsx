@@ -1,9 +1,9 @@
 import styles from "./styles/AboutUs.module.scss";
-import equipoOng from "../../assets/equipo-rescataditdos.jpg";
+import teamPhoto from "../../assets/equipo-rescataditdos.jpg";
 const AboutUs = () => {
   return (
     <main>
-      <section className={styles.historiaOng}>
+      <section className={styles.historySection}>
         <h1>Conocé nuestra historia</h1>
         <p>
           ¿Cómo nació Rescataditos? Conocé nuestra historia Rescataditos es una
@@ -33,15 +33,15 @@ const AboutUs = () => {
           error quae harum aperiam aspernatur voluptatum vel incidunt, magnam
           quos dolor ducimus dolorem!
         </p>
-        <figure className={styles.figure}>
-          <img className={styles.image} src={equipoOng} alt="" />
-          <figcaption className={styles.caption}>
+        <figure className={styles.aboutfigure}>
+          <img className={styles.aboutimage} src={teamPhoto} alt="" />
+          <figcaption className={styles.imagecaption}>
             Parte de la familia de Rescataditos junto a algunos de los animales
             que encontraron una segunda oportunidad.
           </figcaption>
         </figure>
       </section>
-      <section className={styles.misionOng}>
+      <section className={styles.missionSection}>
         <h2>🐾 Nuestra misión</h2>
         <p>
           Nuestra misión Trabajar cada día para rescatar, proteger y mejorar la
