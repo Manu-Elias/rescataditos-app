@@ -1,4 +1,4 @@
-.hero {
+.heroSection {
   background-image: url("../../../assets/Logo-Rescataditos.png");
   background-size: cover;
   background-position: center;
@@ -9,7 +9,7 @@
   /* Empuja el hero hacia abajo para que no quede tapado por el navbar fijo */
   padding: 0 4rem;
 }
-.contenido {
+.heroContent {
   max-width: 500px;
 
   h1 {
@@ -41,12 +41,12 @@
   }
 }
 
-.animalAdopcion {
+.adoptionSection {
   padding: 4rem 2rem;
   /* Espacio interno de la sección — separa el contenido del borde */
 }
 
-.contenedorAdopcion {
+.adoptionContainer {
   display: flex;
   /* Pone la imagen y el texto en fila horizontal */
 
@@ -63,7 +63,7 @@
   /* Centra el contenedor horizontalmente en la página */
 }
 
-.mascotaFoto {
+.petImage {
   width: 450px;
   /* Ancho fijo de la imagen */
 
@@ -80,7 +80,7 @@
   /* Evita que la imagen se achique cuando el texto necesita más espacio */
 }
 
-.tituloAdopcion {
+.adoptionTitle {
   font-size: 2rem;
   /* Título grande */
 
@@ -91,7 +91,7 @@
   /* Gris oscuro — más suave que el negro puro */
 }
 
-.mensajeAdopcion {
+.adoptionMessage {
   font-size: 1rem;
   line-height: 1.8;
   /* Espaciado entre líneas — hace el texto más legible */
@@ -103,7 +103,7 @@
   /* Espacio entre el texto y el botón */
 }
 
-.btnAdoptar {
+.adoptButton {
   background-color: orange;
   color: white;
   border: none;
@@ -117,13 +117,13 @@
   }
 }
 
-.seccionVisitas {
+.visitsSection {
   padding: 4rem 2rem;
   background-color: #f9f9f9;
   /* Fondo gris muy claro — diferencia visualmente esta sección de la anterior */
 }
 
-.contenedorVisitas {
+.visitsContainer {
   display: flex;
   /* Pone el texto y la imagen en fila horizontal */
 
@@ -140,12 +140,12 @@
   /* Centra el contenedor horizontalmente */
 }
 
-.bloqueInformacion {
+.infoBlock {
   flex: 1;
   /* Ocupa el espacio disponible — se adapta según el tamaño de la imagen */
 }
 
-.tituloVisitas {
+.visitsTitle {
   font-size: 2rem;
   color: orange;
   /* Naranja para variar del gris oscuro de la sección anterior */
@@ -153,7 +153,7 @@
   margin-bottom: 1rem;
 }
 
-.mensajeVisitas {
+.visitsMessage {
   font-size: 1rem;
   line-height: 1.8;
   /* Espaciado entre líneas para que sea más legible */
@@ -162,7 +162,7 @@
   margin-bottom: 1.5rem;
 }
 
-.btnVisitas {
+.visitButton {
   background-color: orange;
   color: white;
   border: none;
@@ -176,12 +176,12 @@
   }
 }
 
-.bloqueImagen {
+.imageBlock {
   flex: 1;
   /* Mismo espacio que el bloque de texto */
 }
 
-.fotoVisita {
+.visitPhoto {
   width: 100%;
   /* Ocupa todo el ancho del bloque */
 
@@ -193,7 +193,7 @@
   /* Bordes redondeados */
 }
 
-.seccionCards {
+.cardsSection {
   padding: 4rem 4rem;
   position: relative;
   max-width: 1400px;
@@ -207,7 +207,7 @@
     display: flex;
   }
 
-  .arrow {
+  .carouselArrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -241,7 +241,7 @@
   }
 }
 
-.grilla {
+.cardsGrid {
   width: 100%;
   max-width: 1400px; // Lo subimos de 1200px a 1400px para que las 4 o 5 tarjetas tengan aire
   margin: 0 auto;

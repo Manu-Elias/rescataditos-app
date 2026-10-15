@@ -1,16 +1,16 @@
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./styles/Home.module.scss";
-import imagenRescatado from "../../assets/rescatado.jpg";
-import refugio from "../../assets/refugio.jpg";
+import rescuedImage from "../../assets/rescatado.jpg";
+import shelterImage from "../../assets/refugio.jpg";
 import CardsAccion from "../../components/CardsAccion";
 import cardData from "../../data/cards";
 
 const Home = () => {
   return (
     <>
-      <section className={styles.hero}>
-        <div className={styles.contenido}>
+      <section className={styles.heroSection}>
+        <div className={styles.heroContent}>
           <h1>Rescataditos</h1>
           <p>
             Cambiando destinos desde 2011: rescatamos historias de abandono y
@@ -20,19 +20,19 @@ const Home = () => {
         </div>
       </section>
 
-      <section className={styles.animalAdopcion}>
-        <div className={styles.contenedorAdopcion}>
+      <section className={styles.adoptionSection}>
+        <div className={styles.adoptionContainer}>
           <img
-            className={styles.mascotaFoto}
-            src={imagenRescatado}
+            className={styles.petImage}
+            src={rescuedImage}
             alt="Un perrito rescatado feliz esperando una familia"
           />
           <div>
-            <h2 className={styles.tituloAdopcion}>
+            <h2 className={styles.adoptionTitle}>
               Cambiá un destino, encontrá a tu compañero de vida
             </h2>
 
-            <p className={styles.mensajeAdopcion}>
+            <p className={styles.adoptionMessage}>
               Adoptar no es simplemente meter una mascota a casa; es remendar un
               corazón que fue roto por el abandono. En Rescataditos sabemos que
               detrás de cada mirada triste hay un pasado de frío y olvido, pero
@@ -48,20 +48,20 @@ const Home = () => {
               hoy nos necesita en la calle.
             </p>
 
-            <button className={styles.btnAdoptar}>
+            <button className={styles.adoptButton}>
               Quiero adoptar un Rescatadito
             </button>
           </div>
         </div>
       </section>
 
-      <section className={styles.seccionVisitas}>
-        <div className={styles.contenedorVisitas}>
-          <div className={styles.bloqueInformacion}>
-            <h2 className={styles.tituloVisitas}>
+      <section className={styles.visitsSection}>
+        <div className={styles.visitsContainer}>
+          <div className={styles.infoBlock}>
+            <h2 className={styles.visitsTitle}>
               Vení a conocer Rescataditos y transformá tu día
             </h2>
-            <p className={styles.mensajeVisitas}>
+            <p className={styles.visitsMessage}>
               Cada una de nuestras visitas abre la puerta a un momento mágico de
               amor, juegos y lengüetazos. Venir al refugio no solo les regala a
               ellos una tarde de felicidad y compañía que tanto anhelan, sino
@@ -69,23 +69,23 @@ const Home = () => {
               nuestros rescataditos; puede ser el inicio de una hermosa amistad
               o, quién sabe, el día que encuentres a tu nuevo mejor amigo.
             </p>
-            <button className={styles.btnVisitas}>
+            <button className={styles.visitButton}>
               Agendá tu visita al refugio
             </button>
           </div>
 
-          <div className={styles.bloqueImagen}>
+          <div className={styles.imageBlock}>
             <img
-              className={styles.fotoVisita}
-              src={refugio}
-              alt="Una voluntaria sonriendo mientras un perro rescatado le da cariño"
+              className={styles.visitPhoto}
+              src={shelterImage}
+              alt="Un voluntario sonriendo mientras un perro rescatado le da cariño"
             />
           </div>
         </div>
       </section>
 
       {/* SECCIÓN DEL CARRUSEL GENERAL CON FLECHAS INTEGRADAS */}
-      <section className={styles.seccionCards}>
+      <section className={styles.cardsSection}>
         <Swiper
           modules={[Navigation, Autoplay]}
           spaceBetween={24}
@@ -106,7 +106,7 @@ const Home = () => {
             1024: { slidesPerView: 4, spaceBetween: 24 },
             1400: { slidesPerView: 5, spaceBetween: 24 },
           }}
-          className={styles.grilla}
+          className={styles.cardsGrid}
         >
           {cardData.map((card) => (
             <SwiperSlide key={card.id}>
@@ -123,13 +123,13 @@ const Home = () => {
 
         {/* Flechas más chicas y posicionadas encima de las tarjetas extremas */}
         <button
-          className={`${styles.arrow} ${styles.arrowLeft} boton-prev-tarjeta`}
+          className={`${styles.carouselArrow} ${styles.arrowLeft} boton-prev-tarjeta`}
         >
           {" "}
           ‹{" "}
         </button>
         <button
-          className={`${styles.arrow} ${styles.arrowRight} boton-next-tarjeta`}
+          className={`${styles.carouselArrow} ${styles.arrowRight} boton-next-tarjeta`}
         >
           {" "}
           ›{" "}
