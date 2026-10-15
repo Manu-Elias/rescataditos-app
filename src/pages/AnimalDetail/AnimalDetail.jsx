@@ -16,7 +16,7 @@ const AnimalDetail = () => {
       <div className={styles.errorContainer}>
         <p> No pudimos encontrar a esta mascota en nuestro radar.</p>
         <button
-          className={styles.botonVolver}
+          className={styles.backButton}
           onClick={() => navigate("/animales")}
         >
           Volver al listado
@@ -38,27 +38,18 @@ const AnimalDetail = () => {
       confirmButtonText: "¡Esperaré con ansias!",
       buttonsStyling: false, // Apaga los estilos nativos de SweetAlert para los botones
       customClass: {
-        popup: styles.alertaPopup,
-        title: styles.alertaTitulo,
-        htmlContainer: styles.alertaContenido,
-        confirmButton: styles.alertaBtnConfirmar,
+        popup: styles.alertPopup,
+        title: styles.alertTitle,
+        htmlContainer: styles.alertContent,
+        confirmButton: styles.alertConfirmButton,
       },
     });
   };
 
   return (
     <div className={styles.pageWrapper}>
-      <header className={styles.headerNavegacion}>
-        <button
-          className={styles.btnAtras}
-          onClick={() => navigate("/animales")}
-        >
-          ← Volver a buscar amigos
-        </button>
-      </header>
-
       <main className={styles.heroContainer}>
-        <div className={styles.seccionImagen}>
+        <div className={styles.imageSection}>
           <img
             src={
               urlPhoto ||
@@ -66,27 +57,33 @@ const AnimalDetail = () => {
             }
             alt={`Foto de ${animal.name}`}
           />
-          <div className={styles.badgeEspecie}>
+          <div className={styles.speciesBadge}>
             {translateSpecies(animal.species)}
           </div>
         </div>
 
-        <div className={styles.seccionContenido}>
-          <div className={styles.encabezado}>
-            <span className={styles.subtitulo}>
+        <div className={styles.contentSection}>
+          <button
+            className={styles.backButton}
+            onClick={() => navigate("/animales")}
+          >
+            ← Volver al listado
+          </button>
+          <div className={styles.sectionHeader}>
+            <span className={styles.subtitle}>
               Conocé a tu próximo compañero
             </span>
-            <h1 className={styles.nombreAnimal}>{animal.name}</h1>
+            <h1 className={styles.animalName}>{animal.name}</h1>
           </div>
 
-          <div className={styles.historiaCard}>
+          <div className={styles.historyCard}>
             <h3>Un pedacito de mi historia</h3>
-            <p className={styles.textoHistoria}>{animal.history}</p>
+            <p className={styles.historyText}>{animal.history}</p>
           </div>
 
-          <div className={styles.llamadoAccion}>
+          <div className={styles.callToAction}>
             <p>¿Sentís que {animal.name} podría ser parte de tu familia?</p>
-            <button className={styles.btnAdoptar} onClick={handleAdoptClick}>
+            <button className={styles.adoptButton} onClick={handleAdoptClick}>
               🐾 Quiero Adoptar a {animal.name}
             </button>
           </div>

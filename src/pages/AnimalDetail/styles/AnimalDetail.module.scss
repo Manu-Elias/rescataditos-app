@@ -1,35 +1,25 @@
-// ... (Todo el código anterior del archivo se mantiene exactamente igual)
-
 .pageWrapper {
   min-height: 100vh;
   background-color: #faf5ef;
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  padding-top: 90px;
 }
 
-.headerNavegacion {
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 24px 40px;
-  box-sizing: border-box;
-
-  @media (max-width: 768px) {
-    padding: 16px 20px;
-  }
-}
-
-.btnAtras {
-  background: #ffffff;
-  border: 1px solid #e7e0d5;
-  color: #5c5346;
-  padding: 10px 20px;
-  border-radius: 999px;
+.backButton {
+  background: transparent;
+  border: none;
+  color: #7c6e5f;
+  padding: 0;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px; // Lo separa prolijamente del título
+  width: fit-content;
   transition: all 0.2s ease;
 
   &:hover {
@@ -59,7 +49,7 @@
   }
 }
 
-.seccionImagen {
+.imageSection {
   position: relative;
   height: 100%;
   min-height: 500px;
@@ -77,7 +67,7 @@
   }
 }
 
-.badgeEspecie {
+.speciesBadge {
   position: absolute;
   bottom: 30px;
   left: 30px;
@@ -93,7 +83,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.seccionContenido {
+.contentSection {
   padding: 60px;
   display: flex;
   flex-direction: column;
@@ -105,10 +95,10 @@
   }
 }
 
-.encabezado {
+.sectionHeader {
   margin-bottom: 32px;
 
-  .subtitulo {
+  .subtitle {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -118,7 +108,7 @@
     margin-bottom: 8px;
   }
 
-  .nombreAnimal {
+  .animalName {
     font-size: 56px;
     color: #2c251e;
     margin: 0;
@@ -131,7 +121,7 @@
   }
 }
 
-.historiaCard {
+.historyCard {
   background: #fdfbf7;
   padding: 32px;
   border-radius: 20px;
@@ -148,7 +138,7 @@
     font-weight: 700;
   }
 
-  .textoHistoria {
+  .historyText {
     font-size: 16px;
     color: #5c5146;
     line-height: 1.7;
@@ -156,7 +146,7 @@
   }
 }
 
-.llamadoAccion {
+.callToAction {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -169,7 +159,7 @@
   }
 }
 
-.btnAdoptar {
+.adoptButton {
   background: linear-gradient(135deg, #ff9f1c 0%, #e67e22 100%);
   color: white;
   border: none;
@@ -211,7 +201,7 @@
 /* ==========================================================================
    ESTILOS EXCLUSIVOS PARA EL MODAL DE SWEETALERT2
    ========================================================================== */
-.alertaPopup {
+.alertPopup {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
   border-radius: 24px !important;
   padding: 40px !important;
@@ -220,14 +210,14 @@
   border: 1px solid #f5efe6 !important;
 }
 
-.alertaTitulo {
+.alertTitle {
   font-size: 24px !important;
   color: #2c251e !important;
   font-weight: 800 !important;
   margin-bottom: 12px !important;
 }
 
-.alertaContenido {
+.alertContent {
   font-size: 16px !important;
   color: #5c5146 !important;
   line-height: 1.6 !important;
@@ -237,7 +227,7 @@
   }
 }
 
-.alertaBtnConfirmar {
+.alertConfirmButton {
   background: linear-gradient(135deg, #ff9f1c 0%, #e67e22 100%) !important;
   color: white !important;
   border: none !important;
