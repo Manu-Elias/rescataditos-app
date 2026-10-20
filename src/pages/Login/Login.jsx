@@ -1,57 +1,81 @@
-import { useState } from "react";
 import { VALID_USER, VALID_PASSWORD } from "../../constants/auth";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import styles from "./styles/Login.module.scss";
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [error, setError] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm();
+
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (userName === VALID_USER && userPassword === VALID_PASSWORD) {
+  const onSubmit = (data) => {
+    if (data.userName === VALID_USER && data.userPassword === VALID_PASSWORD) {
       localStorage.setItem("isLoggedIn", "true");
       navigate("/admin");
     } else {
-      setError(true);
+      setError("root.invalidCredentials", {
+        type: "manual",
+        message: "Usuario o contraseña incorrecta",
+      });
     }
   };
 
   return (
     <div className={styles.loginContainer}>
-      <form onSubmit={handleSubmit} className={styles.loginForm}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.loginForm}
+        noValidate
+      >
         <h2>Iniciar Sesión</h2>
 
         <div className={styles.inputGroup}>
-          <label>Usuario</label>
+          <label htmlFor="user-name">Usuario</label>
           <input
             type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            id="user-name"
+            {...register("userName", {
+              required: "Ingrese un nombre de Usuario",
+            })}
             placeholder="Ingresá tu usuario"
-            required
           />
+          {errors.userName && (
+            <span className={styles.errorMessage} role="alert">
+              {errors.userName.message}
+            </span>
+          )}
         </div>
 
         <div className={styles.inputGroup}>
-          <label>Contraseña</label>
+          <label htmlFor="password-user">Contraseña</label>
           <input
             type="password"
-            value={userPassword}
-            onChange={(e) => setUserPassword(e.target.value)}
+            id="password-user"
+            {...register("userPassword", {
+              required: "Ingrese una contraseña",
+            })}
             placeholder="Ingresá tu contraseña"
-            required
           />
+          {errors.userPassword && (
+            <span className={styles.errorMessage} role="alert">
+              {errors.userPassword.message}
+            </span>
+          )}
         </div>
 
         <button type="submit" className={styles.submitBtn}>
           Ingresar
         </button>
 
-        {error && (
-          <p className={styles.errorMessage}>Usuario o contraseña incorrecta</p>
+        {errors.root?.invalidCredentials && (
+          <span className={styles.errorMessage} role="alert">
+            {errors.root.invalidCredentials.message}
+          </span>
         )}
       </form>
     </div>

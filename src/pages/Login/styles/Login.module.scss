@@ -76,10 +76,8 @@
 
 .errorMessage {
   color: #d9534f;
-  background-color: #fdf7f7;
-  border: 1px solid #f5c6cb;
-  padding: 10px;
-  border-radius: 6px;
+  width: 100%;
+  display: block;
   font-size: 14px;
   text-align: center;
   margin-top: 15px;
