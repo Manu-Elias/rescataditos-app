@@ -8,6 +8,7 @@ import Donations from "./pages/Donations/Donations";
 import MainLayout from "./layouts/MainLayout";
 import Login from "./pages/Login/Login";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PublicRoute from "./routes/PublicRoute";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import { useQuery } from "@tanstack/react-query";
 import { getAnimals } from "./features/animals/services/animalesService";
@@ -36,11 +37,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+
         <Route path="/admin" element={<ProtectedRoute />}>
           <Route index element={<AdminDashboard />} />
         </Route>
-
-        <Route path="/login" element={<Login />} />
 
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />

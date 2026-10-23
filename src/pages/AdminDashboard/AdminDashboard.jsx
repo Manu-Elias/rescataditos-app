@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { clearSession } from "../../features/auth/services/authService";
 import AnimalForm from "../../components/forms/AnimalForm/AnimalForm";
 import AnimalCard from "../../components/cards/AnimalCard/AnimalCard";
 import useAnimalStore from "../../features/animals/store/useAnimalStore";
@@ -36,14 +37,9 @@ const AdminDashboard = () => {
     }).then((result) => {
       // Si el usuario hace clic en "Sí, salir"
       if (result.isConfirmed) {
-        // Removemos el item de autenticación
-        localStorage.removeItem("isLoggedIn");
+        clearSession();
 
-        // Redirigimos al login
-        navigate("/");
-
-        // Despachar un evento de almacenamiento para que React se entere al instante:
-        window.dispatchEvent(new Event("storage"));
+        navigate("/", { replace: true });
       }
     });
   };

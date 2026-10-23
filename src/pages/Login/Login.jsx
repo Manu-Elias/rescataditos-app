@@ -1,4 +1,5 @@
 import { VALID_USER, VALID_PASSWORD } from "../../constants/auth";
+import { saveSession } from "../../features/auth/services/authService";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import styles from "./styles/Login.module.scss";
@@ -15,8 +16,8 @@ const Login = () => {
 
   const onSubmit = (data) => {
     if (data.userName === VALID_USER && data.userPassword === VALID_PASSWORD) {
-      localStorage.setItem("isLoggedIn", "true");
-      navigate("/admin");
+      saveSession();
+      navigate("/admin", { replace: true });
     } else {
       setError("root.invalidCredentials", {
         type: "manual",

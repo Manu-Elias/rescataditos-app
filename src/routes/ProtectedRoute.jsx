@@ -1,10 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom";
+import { isAuthenticated } from "../features/auth/services/authService";
 
-
-const ProtectedRoute  = ()=>{
-    
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-    return isLoggedIn === "true" ? <Outlet/> : <Navigate to="/login" />
-}
+const ProtectedRoute = () =>
+  isAuthenticated() ? <Outlet /> : <Navigate replace to="/login" />;
 
 export default ProtectedRoute;
